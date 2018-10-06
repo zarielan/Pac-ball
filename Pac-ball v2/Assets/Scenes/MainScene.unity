@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 444595454}
   - component: {fileID: 444595453}
   m_Layer: 5
-  m_Name: Time
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -702,8 +702,10 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Time:'
+    m_LineSpacing: 1.25
+  m_Text: 'Time:
+
+    Points:'
 --- !u!222 &444595454
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1823,7 +1825,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482a34b9d95f4a34185c884fdfe6ab4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: {fileID: 444595453}
+  ui: {fileID: 444595453}
+  pickups: {fileID: 1028508104}
 --- !u!1 &933887277
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,6 +2053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  points: 0
 --- !u!54 &1058344128
 Rigidbody:
   m_ObjectHideFlags: 0

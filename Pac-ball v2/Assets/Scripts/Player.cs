@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
 
     private Vector3 move;
     public float speed;
+    public int points;
 
     // Use this for initialization
     void Start ()
     {
         player = GetComponent<Rigidbody>();
+        points = 0;
     }
 
     private void FixedUpdate()
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Pick Up"))
         {
             other.gameObject.SetActive(false);
+            points++;
         }
     }
 }
