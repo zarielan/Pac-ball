@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (points < totalPickups && acceptInputs && isDead)
+        if (points < totalPickups && acceptInputs && !isDead)
         {
             float moveHorizontal = Input.GetAxisRaw("Horizontal");
             float moveVertical = Input.GetAxisRaw("Vertical");
