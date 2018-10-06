@@ -10,3 +10,6 @@ A game!
   - Identify the 2-3 new scripts and explain
   - Document the implementation and methods
   - Explain the obstacles and problems I've encountered and how I solved them
+* Fix game persisting after end condition
+* Add new game function
+* CRLF Error, License
