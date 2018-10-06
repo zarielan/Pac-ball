@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1 : MonoBehaviour
+public class Enemy4 : MonoBehaviour
 {
     public float speed;
     private Vector3[] waypoints;
@@ -14,18 +14,26 @@ public class Enemy1 : MonoBehaviour
         i = 0;
 
         waypoints = new Vector3[] {
-            new Vector3(-6f, 0.5f, 0f),
-            new Vector3(-8f, 0.5f, 0f),
-            new Vector3(-8f, 0.5f, -2f),
-            new Vector3(-6f, 0.5f, -2f),
-            new Vector3(-6f, 0.5f, -4f),
-            new Vector3(6f, 0.5f, -4f),
+            new Vector3(-2f, 0.5f, -8f),
+            new Vector3(-2f, 0.5f, -6f),
+            new Vector3(0f, 0.5f, -6f),
+            new Vector3(0f, 0.5f, -8f),
+            new Vector3(8f, 0.5f, -8f),
+            new Vector3(8f, 0.5f, -2f),
+            new Vector3(6f, 0.5f, -2f),
             new Vector3(6f, 0.5f, 0f),
             new Vector3(8f, 0.5f, 0f),
-            new Vector3(8f, 0.5f, 2f),
-            new Vector3(6f, 0.5f, 2f),
-            new Vector3(6f, 0.5f, 4f),
-            new Vector3(-6f, 0.5f, 4f),
+            new Vector3(8f, 0.5f, 8f),
+            new Vector3(2f, 0.5f, 8f),
+            new Vector3(2f, 0.5f, 6f),
+            new Vector3(0f, 0.5f, 6f),
+            new Vector3(0f, 0.5f, 8f),
+            new Vector3(-8f, 0.5f, 8f),
+            new Vector3(-8f, 0.5f, 2f),
+            new Vector3(-6f, 0.5f, 2f),
+            new Vector3(-6f, 0.5f, 0f),
+            new Vector3(-8f, 0.5f, 0f),
+            new Vector3(-8f, 0.5f, -8f),
         };
 
         StartCoroutine(Move());

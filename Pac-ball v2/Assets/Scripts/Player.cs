@@ -12,18 +12,21 @@ public class Player : MonoBehaviour
 
     private int totalPickups;
 
+    public bool acceptInputs;
+
     // Use this for initialization
     void Start ()
     {
         player = GetComponent<Rigidbody>();
         points = 0;
+        acceptInputs = false;
 
         totalPickups = GameObject.FindGameObjectsWithTag("Pick Up").Length;
     }
 
     private void FixedUpdate()
     {
-        if (points < totalPickups)
+        if (points < totalPickups && acceptInputs)
         {
             float moveHorizontal = Input.GetAxisRaw("Horizontal");
             float moveVertical = Input.GetAxisRaw("Vertical");

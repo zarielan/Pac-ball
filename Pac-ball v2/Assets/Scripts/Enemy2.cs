@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy2 : MonoBehaviour
 {
-    private float speed = 10f;
+    public float speed;
     private Vector3[] waypoints;
     private int i;
     private const float minDistance = 0f;
@@ -59,6 +59,14 @@ public class Enemy2 : MonoBehaviour
             }
 
             yield return null;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy2") || collision.gameObject.CompareTag("Enemy"))
+        {
+            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
         }
     }
 }
