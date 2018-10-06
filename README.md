@@ -11,7 +11,5 @@ A game!
   - Document the implementation and methods
   - Explain the obstacles and problems I've encountered and how I solved them
 * **Add jcvaldez1 as a collaborator**
-* Set winning condition
-* Add ending GUI
 * Add enemies
 * Add lose GUI
