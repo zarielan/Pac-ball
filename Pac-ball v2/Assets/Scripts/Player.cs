@@ -9,17 +9,11 @@ public class Player : MonoBehaviour
     private Vector3 move;
     public float speed;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         player = GetComponent<Rigidbody>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
+    }
 
     private void FixedUpdate()
     {

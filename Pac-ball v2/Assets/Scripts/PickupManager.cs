@@ -6,10 +6,10 @@ public class PickupManager : MonoBehaviour
 {
     public GameObject pickupPrefab;
 
-	// Use this for initialization
-	void Start()
+    // Use this for initialization
+    void Start()
     {
-	    for (int x = -8; x <= 8; x += 2)
+        for (int x = -8; x <= 8; x += 2)
         {
             for (int z = -8; z <= 8; z += 2)
             {
@@ -22,10 +22,5 @@ public class PickupManager : MonoBehaviour
                 pickupGeneric.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
             }
         }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
 }
