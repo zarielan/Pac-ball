@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
             points++;
         }
 
-        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Enemy2"))
+        if ((other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Enemy2")))
         {
             isDead = true;
         }

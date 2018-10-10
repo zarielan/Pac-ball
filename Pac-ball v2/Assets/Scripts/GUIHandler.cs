@@ -31,7 +31,7 @@ public class GUIHandler : MonoBehaviour
 
     private void Update()
     {
-        if (player.isDead)
+        if (player.isDead && state < 2)
         {
             state = 3;
         }
