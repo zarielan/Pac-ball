@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GUIHandler : MonoBehaviour
 {
@@ -62,7 +63,7 @@ public class GUIHandler : MonoBehaviour
         }
         else if (state == 2)
         {
-            endingDescription.text = string.Format("You finished the game in {0:0.00} seconds!", currentTime);
+            endingDescription.text = string.Format("You finished the game in {0:0.00} seconds!{1}{1}Click to start a new game!", currentTime, Environment.NewLine);
             endingText.text = "You Won! :D";
 
             ending.alpha = 1f;
@@ -70,11 +71,16 @@ public class GUIHandler : MonoBehaviour
         }
         else if (state == 3)
         {
-            endingDescription.text = string.Format("It's okay, you got {0} points out of {1} in {2:0.00} seconds tho!", pickedUp, totalPickups, currentTime);
+            endingDescription.text = string.Format("It's okay, you got {0} of {1} points in {2:0.00} seconds tho!{3}{3}Click to start a new game!", pickedUp, totalPickups, currentTime, Environment.NewLine);
             endingText.text = "You Died! :(";
 
             ending.alpha = 1f;
             ending.blocksRaycasts = true;
+        }
+
+        if (Input.GetMouseButton(0) && state >= 2)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
