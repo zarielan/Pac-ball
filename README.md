@@ -11,10 +11,15 @@ A game!
   - Document the implementation and methods
   - Explain the obstacles and problems I've encountered and how I solved them
 * **Finish the game**
-  - Add new game function
+
 * CRLF Error, License
 
 ## Releases
 
-# 1.0.0
+### 1.1.0
+- Fixed dying even upon winning
+- Added the ability to start a new game
+- Made sure that the timer only starts on the beginning of the actual gameplay
+
+### 1.0.0
 * First Release!
