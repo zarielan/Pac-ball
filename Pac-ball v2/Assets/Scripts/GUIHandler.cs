@@ -20,6 +20,7 @@ public class GUIHandler : MonoBehaviour
 
     private int state;
     private float currentTime;
+    private float startTime;
 
     private void Start()
     {
@@ -43,6 +44,7 @@ public class GUIHandler : MonoBehaviour
                 start.blocksRaycasts = false;
                 state++;
                 player.acceptInputs = true;
+                startTime = Time.time;
             }
         }
         if (state == 1)
@@ -51,7 +53,7 @@ public class GUIHandler : MonoBehaviour
                 totalPickups = GameObject.FindGameObjectsWithTag("Pick Up").Length;
 
             pickedUp = player.points;
-            currentTime = Time.time;
+            currentTime = Time.time - startTime;
 
             ui.text = string.Format("Time: {0:0.00}s{1}Points: {2} / {3} ({4:0.00}%)", currentTime, Environment.NewLine, pickedUp, totalPickups, pickedUp / totalPickups * 100);
 
