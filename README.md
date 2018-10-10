@@ -13,7 +13,6 @@ A game!
 * **Finish the game**
   - Fix game persisting after end condition
   - Add new game function
-  - Make sure timer only starts on actual game start
 * CRLF Error, License
 
 ## Releases
