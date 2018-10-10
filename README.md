@@ -15,3 +15,8 @@ A game!
   - Add new game function
   - Make sure timer only starts on actual game start
 * CRLF Error, License
+
+## Releases
+
+# 1.0.0
+* First Release!
