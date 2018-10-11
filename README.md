@@ -154,6 +154,90 @@ private void OnCollisionEnter(Collision collision)
 }
 ````
 
+### GUI Handler
+
+This updates the UI. Since I'm not that familiar with how the UI works in Unity yet, I've decided to use states via a counter and if functions. The first state, state 0, is the start screen. On click, the instructions disappear, the state changes to 1, the playing state, the player starts accepting inputs, and the timer runs.
+
+The playing state, state 1, checks for the number of points picked up by the player and the current time, then displays it. If it finds that it has indeed picked up all points, then it moves on to state 2.
+
+State 2, the win-ending state, displays the ending message for when a player wins. State 3 is similar, but displays the message for when the player loses instead.
+
+````C#
+public Text ui;
+private Player player;
+private float totalPickups;
+private float pickedUp;
+public Image overlay;
+public Text endingText;
+public Text endingDescription;
+public CanvasGroup ending;
+public CanvasGroup start;
+private int state;
+private float currentTime;
+private float startTime;
+
+private void Start()
+{
+	state = 0;
+	player = GameObject.Find("Player").GetComponent<Player>();
+	totalPickups = GameObject.FindGameObjectsWithTag("Pick Up").Length;
+}
+
+private void Update()
+{
+	if (player.isDead && state < 2)
+	{
+		state = 3;
+	}
+
+	if (state == 0)
+	{
+		if (Input.GetMouseButton(0))
+		{
+			start.alpha = 0f;
+			start.blocksRaycasts = false;
+			state++;
+			player.acceptInputs = true;
+			startTime = Time.time;
+		}
+	}
+	if (state == 1)
+	{
+		while (totalPickups <= 0)
+			totalPickups = GameObject.FindGameObjectsWithTag("Pick Up").Length;
+
+		pickedUp = player.points;
+		currentTime = Time.time - startTime;
+
+		ui.text = string.Format("Time: {0:0.00}s{1}Points: {2} / {3} ({4:0.00}%)", currentTime, Environment.NewLine, pickedUp, totalPickups, pickedUp / totalPickups * 100);
+
+		if (pickedUp >= totalPickups)
+			state = 2;
+	}
+	else if (state == 2)
+	{
+		endingDescription.text = string.Format("You finished the game in {0:0.00} seconds!{1}{1}Click to start a new game!", currentTime, Environment.NewLine);
+		endingText.text = "You Won! :D";
+
+		ending.alpha = 1f;
+		ending.blocksRaycasts = true;
+	}
+	else if (state == 3)
+	{
+		endingDescription.text = string.Format("It's okay, you got {0} of {1} points in {2:0.00} seconds tho!{3}{3}Click to start a new game!", pickedUp, totalPickups, currentTime, Environment.NewLine);
+		endingText.text = "You Died! :(";
+
+		ending.alpha = 1f;
+		ending.blocksRaycasts = true;
+	}
+
+	if (Input.GetMouseButton(0) && state >= 2)
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+}
+````
+
 [TODO ROFL]
 
 ## Releases
