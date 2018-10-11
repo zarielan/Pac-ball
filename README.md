@@ -270,9 +270,19 @@ void Start()
 		}
 	}
 }
-	````
+````
 
-[TODO ROFL]
+## Obstacles and Problems I've Encountered
+
+* **This is my first time handling Unity.** The main obstacle is that Unity is brand new to me. I've touched it before briefly, but I didn't pursue it because it was hard for me back then. So everything is pretty much foreign to me. The Unity UI itself, its documentation, the methods it uses, among many, many others. Good thing that I was able to get the help of the Roll-a-Ball tutorial, documentation, forums, stackoverflow, and other people :)
+
+* **Creating the play field.** The map is basically a maze, so I had to manually put in all the walls manually. It didn't help that the x/y/z coordinates are different from what I'm used to, so it definitely made it much more difficult.
+
+* **Adding in the pickups.** In the tutorial, the tutor planted in the pickups manually. Unfortunately my idea consisted of 80 pickups, which would be tedious if done manually. I had to find a way to do it using code. (Which is pretty helpful since I now know how to instantiate objects using prefab via code!)
+
+* **Using Git.** I also consider myself a newbie in Git. Even after watching the videos, I still feel like actual Git experience is the key to learning Git. With that said:
+
+* **I almost lost my project due to Git mishaps.** Yeah, I ended up changing my Github username while I was doing the project. I thought it was a good idea to rewrite all my previous commits to feature the new name and email. A couple of commands I didn't fully understand from stackoverflow later, my project ended up having TONS of conflicts. I couldn't even Save As a new project because of so much conflict. I had to salvage what I can get and create a new project and repository (hence, the v2 in the name)
 
 ## Releases
 
