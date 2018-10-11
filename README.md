@@ -238,6 +238,40 @@ private void Update()
 }
 ````
 
+### Pick up
+This codes makes the pickups rotate continuously.
+
+````C#
+void Update()
+{
+	transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
+}
+````
+
+### Pick up Manager
+Using the pickup prefab, I initializaed all 80 pickups via code, instead of creating them directly in Unity
+
+````C#
+public GameObject pickupPrefab;
+
+void Start()
+{
+	for (int x = -8; x <= 8; x += 2)
+	{
+		for (int z = -8; z <= 8; z += 2)
+		{
+			if (x == 0 && z == 0)
+				continue;
+
+			GameObject pickupGeneric = Instantiate(pickupPrefab);
+			pickupGeneric.transform.position = new Vector3(x, 0.5f, z);
+			pickupGeneric.transform.Rotate(new Vector3(45, 45, 45));
+			pickupGeneric.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+		}
+	}
+}
+	````
+
 [TODO ROFL]
 
 ## Releases
