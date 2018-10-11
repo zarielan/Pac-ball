@@ -43,6 +43,56 @@ void LateUpdate()
 }
 ````
 
+### Player
+The player ball gets pushed with a force by `GameObject.AddForce`, but only if the player hasn't picked up all the pickups yet, and if it should be asking inputs, and if it isn't dead yet. If the player collides with a pickup, it adds to its points and makes the pickup disappear. If instead, it collides with an enemy ball, it dies.
+
+````C#
+private Rigidbody player;
+private Vector3 move;
+public float speed;
+public int points;
+private int totalPickups;
+public bool acceptInputs;
+public bool isDead;
+
+void Start ()
+{
+	player = GetComponent<Rigidbody>();
+	points = 0;
+	acceptInputs = false;
+	isDead = false;
+
+	totalPickups = GameObject.FindGameObjectsWithTag("Pick Up").Length;
+}
+
+private void FixedUpdate()
+{
+	if (points < totalPickups && acceptInputs && !isDead)
+	{
+		float moveHorizontal = Input.GetAxisRaw("Horizontal");
+		float moveVertical = Input.GetAxisRaw("Vertical");
+
+		move = new Vector3(moveHorizontal, 0f, moveVertical);
+
+		player.AddForce(move * speed);
+	}
+}
+
+private void OnTriggerEnter(Collider other)
+{
+	if (other.gameObject.CompareTag("Pick Up"))
+	{
+		other.gameObject.SetActive(false);
+		points++;
+	}
+
+	if ((other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Enemy2")))
+	{
+		isDead = true;
+	}
+}
+````
+
 [TODO ROFL]
 
 ## Releases
