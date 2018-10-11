@@ -18,7 +18,30 @@ In the maze, there are green spots. These are safe spaces, because the enemy bal
 
 * **Script**. This is an important component, because essentially we control the game from these. I put all code logic into scripts I attach to each object, that allow them to do certain things like, move when I press a key, do this when I click, or disappear upon collision, among many others.
 
+* **Canvas Group**. I used this component for the UI. What this does is it allows me to hide or show a UI by changing its alpha and block raycasts option. By setting the alpha to 0 and set it to not block raycasts, all its child UI objects will effectively be hidden. Doing the opposite would show them.
+
 ## Scripts
+
+### Camera
+This script makes the camera follow the player ball as it moves in its x and z axis. I used `Vector3.SmoothDamp` so that the movement of the camera is smooth, with a bit of some elasticity to it.
+
+````C#
+public GameObject player;
+private Vector3 velocity = Vector3.zero;
+private float fixedY;
+
+private void Start()
+{
+	fixedY = transform.position.y;
+}
+
+void LateUpdate()
+{
+	Vector3 newPos = Vector3.SmoothDamp(transform.position, player.transform.position, ref velocity, 0.1f);
+	newPos.y = fixedY;
+	transform.position = newPos;
+}
+````
 
 [TODO ROFL]
 
