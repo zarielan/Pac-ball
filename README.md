@@ -93,6 +93,67 @@ private void OnTriggerEnter(Collider other)
 }
 ````
 
+### Enemy (1-4)
+The enemy class mostly contains its code to move along its path. Based off of [this code from the Unity Community Forums](https://forum.unity.com/threads/making-objects-move-in-repeating-path.438404/). Basically, its route is hardcoded. It starts a Coroutine wherein until a ball reaches its next waypoint, it must move straight to it. Once it has reached it, the waypoint will move to the next one, and the process repeats all over again. This script also makes it so that it ignores collisions with other enemy balls.
+
+````C#
+public float speed;
+private Vector3[] waypoints;
+private int i;
+private const float minDistance = 0f;
+
+private void Start()
+{
+	i = 0;
+
+	waypoints = new Vector3[] {
+		// List of all points to go through
+		// Different for each ball
+	};
+
+	StartCoroutine(Move());
+}
+
+private void GetNewWaypoint()
+{
+	int newWaypoint = i + 1;
+
+	if (newWaypoint > waypoints.Length - 1)
+		newWaypoint = 0;
+
+	i = newWaypoint;
+
+	StartCoroutine(Move());
+}
+
+private IEnumerator Move()
+{
+	float distance = Vector3.Distance(transform.position, waypoints[i]);
+
+	while (distance > minDistance)
+	{
+		distance = Vector3.Distance(transform.position, waypoints[i]);
+
+		transform.position = Vector3.MoveTowards(transform.position, waypoints[i], speed * Time.deltaTime);
+
+		if (distance <= minDistance)
+		{
+			GetNewWaypoint();
+		}
+
+		yield return null;
+	}
+}
+
+private void OnCollisionEnter(Collision collision)
+{
+	if (collision.gameObject.CompareTag("Enemy2") || collision.gameObject.CompareTag("Enemy"))
+	{
+		Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+	}
+}
+````
+
 [TODO ROFL]
 
 ## Releases
